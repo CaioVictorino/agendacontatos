@@ -16,26 +16,34 @@
             <div class="col-sm-12"><br>
                 <a href="/"><button type="button" class="btn btn-success">Voltar</button></a><center>Detalhes de contatos</center><br>
 
+                Informações
                 <table class="table table-dark table-striped">
                     <tr>
                         <td>Nome</td><td>{{$user->name." ".$user->surname}}</td>
                     </tr>
                     <tr>
-                        <td>Telefone(s)</td>
-                        @foreach($telefone as $tel)
-                            <td>{{"($tel->ddd) $tel->telefone"}}</td>
-                        @endforeach
-                    </tr>
-                    <tr>
                         <td>Email</td><td>{{$user->email}}</td>
                     </tr>
+                <table><br><br>
+                
+                    Telefone(s)
+                <table class="table table-dark table-striped">
+                    @foreach($telefone as $tel)
                     <tr>
-                        <td>Endereco(s)</td>
-                        @foreach($endereco as $end)
-                        <td>{{"$end->endereco, $end->numero, $end->bairro, $end->cidade/$end->estado"}}</td>
-                        @endforeach
+                            <td>{{"($tel->ddd) $tel->telefone"}}</td>
                     </tr>
-                <table><br>
+                    @endforeach
+                </table><br><br>
+
+                Endereco(s)
+                <table class="table table-dark table-striped">
+                    @foreach($endereco as $end)
+                    <tr>
+                        <td>{{"$end->endereco, $end->numero, $end->bairro, $end->cidade/$end->estado"}}</td>
+                    </tr>
+                    @endforeach
+                </table>
+
                     <a href=" {{url('/contatos/teledit/'.$user->id)}}"><button type="button" class="btn btn-success">Adicionar telefone</button></a><br><br>
                     <a href=" {{url('/contatos/endedit/'.$user->id)}}"><button type="button" class="btn btn-success">Adicionar endereço</button></a><br><br>
                     <button type="button" class="btn btn-danger">Voltar</button>

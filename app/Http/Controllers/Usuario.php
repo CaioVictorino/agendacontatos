@@ -134,12 +134,13 @@ class Usuario extends Controller
 
         public function addEnd(Request $request, $id){
             $user = User::all();
-            
+
             $end = new Endereco;
+            $end->cep = $request->cep;
             $end->endereco = $request->logradouro;
             $end->numero = $request->numero;
             $end->bairro = $request->bairro;
-            $end->cidade = $request->localidade;
+            $end->cidade = $request->cidade;
             $end->estado = $request->estado;
             $end->user_id = $request->id;
             $end->save();
